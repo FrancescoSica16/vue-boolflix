@@ -2,12 +2,32 @@
   <div>
    
     <Searchbar @search="SearchFilm"/>
+
+    <div class="d-flex" >
+      <FilmcardGroup v-for="(film, index) in filmList" :key="index" 
+      :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
+    </div>
+    
+
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-3" v-for="(film, index) in filmList" :key="index">
+          <h1>{{film.original_title}}</h1>
+          <h3>{{film.title}}</h3>
+          <p>{{film.original_language}}</p>
+          <p>{{film.vote_average}}</p>
+
+        </div>
+      </div>
+    </div> -->
+    <!-- <h1 v-for="(film, index) in filmList" :key="index">{{film.original_title}}</h1> -->
    
   </div>
 </template>
 
 <script>
 import Searchbar from './components/Searchbar.vue';
+import FilmcardGroup from "./components/FilmcardGroup.vue";
 import axios from "axios";
 
 export default {
@@ -18,7 +38,8 @@ export default {
     }
   },
   components: {
-    Searchbar
+    Searchbar,
+    FilmcardGroup
   },
   computed:{
 

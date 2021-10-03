@@ -1,3 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
 // @import fontsource
+
+*{
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}

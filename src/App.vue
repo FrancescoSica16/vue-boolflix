@@ -1,26 +1,26 @@
 <template>
   <div>
-   
     <Searchbar @search="SearchFilm"/>
-
-    <div class="d-flex" >
-      <FilmcardGroup v-for="(film, index) in filmList" :key="index" 
-      :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
-    </div>
     
-
-    <!-- <div class="container">
+    <div class="container">
       <div class="row">
-        <div class="col-3" v-for="(film, index) in filmList" :key="index">
-          <h1>{{film.original_title}}</h1>
-          <h3>{{film.title}}</h3>
-          <p>{{film.original_language}}</p>
-          <p>{{film.vote_average}}</p>
-
+        <h1>Film</h1> 
+        <div class="d-flex flex-wrap" >
+          <FilmcardGroup v-for="(film) in filmList" :key="film.id" 
+          :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
         </div>
       </div>
-    </div> -->
-    <!-- <h1 v-for="(film, index) in filmList" :key="index">{{film.original_title}}</h1> -->
+    </div>
+     <div class="container">
+      <div class="row">
+        <h1>serie TV</h1>
+        <div class="d-flex flex-wrap" >
+          <FilmcardGroup v-for="(serie, index) in serieList" :key="index" 
+          :title_original="serie.original_title" :title="serie.title" :language="serie.original_language" :vote="serie.vote_average"/>     
+        </div>
+      </div>
+    </div>
+    
    
   </div>
 </template>
@@ -35,7 +35,12 @@ export default {
   data: function (){
     return {
       filmList: [],
+      serieList: [],
     }
+  },
+  props: {
+    "movies": Array,
+    "tvSeries":Array
   },
   components: {
     Searchbar,
@@ -56,8 +61,26 @@ export default {
          this.filmList = response.data.results.slice();
           console.log(this.filmList);
     })
+     // .catch ( 
+    //   (errore) => {
+    },
+
+    SearchSerie: function (serchKey) {
+
+      axios.get('https://api.themoviedb.org/3/search/tv/', {
+        params: { 
+          api_key : '3470fd1ace343e7c3044569008e5458d',
+          query: serchKey
+        }})
+      .then( (response) => {
+         this.serieList = response.data.results.slice();
+          console.log(this.serieList);
+    })
+     // .catch ( 
+    //   (errore) => {
     }
-  },
+
+  }
 }
 </script> 
 

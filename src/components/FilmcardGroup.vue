@@ -1,11 +1,9 @@
-<template>
-    <div class="container">
-      <div class="row">
-        <div class="col-3 ">
+<template>   
+    <div class="col-3 border">
         <h1>{{title_original}}</h1>
         <h3>{{title}}</h3>
-        <!-- <p>{{language}}</p> -->
         <div>
+            <!-- inserire img da assets -->
             <img class="flag" :src="(language === 'it') ? 
             'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/64px-Flag_of_Italy.svg.png' : 
             (language === 'en') ?
@@ -14,9 +12,9 @@
             'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_Union_of_Soviet_Socialist_Republics.png/64px-Flag_of_Union_of_Soviet_Socialist_Republics.png'" alt="">
         </div>
         <p>{{vote}}</p>         
-        </div>
-      </div>
     </div>
+      
+    
 
     
 </template>

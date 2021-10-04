@@ -1,7 +1,7 @@
 <template>   
     <div class="col-3 border">
-        <h1>{{title_original}}</h1>
-        <h3>{{title}}</h3>
+        <h1 class="fw-bold">{{title_original ? title_original : name_original}}</h1>
+        <h3>{{title ? title : name}}</h3>
         <div>
             <!-- inserire img da assets -->
             <img class="flag" :src="(language === 'it') ? 
@@ -22,7 +22,8 @@
 <script>
 export default {
     name: "FilmcardGroup",
-    props: ['title_original','title', "language","vote"],
+    props: ['title_original','title', "language","vote",
+    "name_original", "name"],
 
 }
 </script>

@@ -16,6 +16,7 @@
         <h1>serie TV</h1>
         <div class="d-flex flex-wrap" >
           <FilmcardGroup v-for="(serie, index) in serieList" :key="index" 
+          :name_original="serie.original_name" :name="serie.name"
           :title_original="serie.original_title" :title="serie.title" :language="serie.original_language" :vote="serie.vote_average"/>     
         </div>
       </div>
@@ -60,14 +61,9 @@ export default {
       .then( (response) => {
          this.filmList = response.data.results.slice();
           console.log(this.filmList);
-    })
-     // .catch ( 
-    //   (errore) => {
-    },
+    });
 
-    SearchSerie: function (serchKey) {
-
-      axios.get('https://api.themoviedb.org/3/search/tv/', {
+    axios.get('https://api.themoviedb.org/3/search/tv/', {
         params: { 
           api_key : '3470fd1ace343e7c3044569008e5458d',
           query: serchKey
@@ -76,6 +72,7 @@ export default {
          this.serieList = response.data.results.slice();
           console.log(this.serieList);
     })
+
      // .catch ( 
     //   (errore) => {
     }

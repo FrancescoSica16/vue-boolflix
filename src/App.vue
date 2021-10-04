@@ -7,6 +7,7 @@
         <h1>Film</h1> 
         <div class="d-flex flex-wrap" >
           <FilmcardGroup v-for="(film) in filmList" :key="film.id" 
+          :poster="film.poster_path"
           :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
         </div>
       </div>
@@ -30,6 +31,7 @@
 import Searchbar from './components/Searchbar.vue';
 import FilmcardGroup from "./components/FilmcardGroup.vue";
 import axios from "axios";
+
 
 export default {
   name: 'App',

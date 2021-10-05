@@ -4,7 +4,7 @@
     
     <div class="container">
       <div class="row">
-        <h1>Film</h1> 
+        <h1 v-if="filmList.length > 0">Film</h1> 
         <div class="d-flex flex-wrap" >
           <FilmcardGroup v-for="(film) in filmList" :key="film.id" 
           :poster="film.poster_path"
@@ -14,7 +14,7 @@
     </div>
      <div class="container">
       <div class="row">
-        <h1>serie TV</h1>
+        <h1 v-if="serieList.length > 0">serie TV</h1>
         <div class="d-flex flex-wrap" >
           <FilmcardGroup v-for="(serie, index) in serieList" :key="index" 
           :name_original="serie.original_name" :name="serie.name" :poster="serie.poster_path"

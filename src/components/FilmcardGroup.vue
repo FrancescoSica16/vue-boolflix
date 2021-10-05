@@ -20,7 +20,6 @@
                 <p>{{vote}}</p>
                 <i v-for="n in 5" :key="n" class="fas fa-star" :class="(n <= Math.round(vote)/2) ? 'yellow' : 'gray' "></i>
             </div>
-
         </div>         
     </div>  
 </template>
@@ -46,17 +45,25 @@ export default {
 }
 </script>
 
-<style>
+<style  lang="scss">
+@import "../style/general.scss";
+@import "../style/variabiles.scss";
+
     .card{
         max-width: 232px;
         max-height: 347px;
     }
-    /* .my-card-img{
-        display: none;
-      
-    }  */
+    .card:not(:hover){
+        .inside-card{
+            display: none;
+        }
+    }
 
-
+    .card:hover{
+        .my-card-img{
+            display: none;
+        }  
+    }
 
    img.flag{
         width: 30px;

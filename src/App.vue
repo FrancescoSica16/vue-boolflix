@@ -17,7 +17,7 @@
         <h1>serie TV</h1>
         <div class="d-flex flex-wrap" >
           <FilmcardGroup v-for="(serie, index) in serieList" :key="index" 
-          :name_original="serie.original_name" :name="serie.name"
+          :name_original="serie.original_name" :name="serie.name" :poster="serie.poster_path"
           :title_original="serie.original_title" :title="serie.title" :language="serie.original_language" :vote="serie.vote_average"/>     
         </div>
       </div>
@@ -86,5 +86,9 @@ export default {
 <style lang="scss">
 @import "style/general.scss";
 @import "style/variabiles.scss";
+
+body{
+  background-color: $bodyColor;
+}
 
 </style>

@@ -4,26 +4,35 @@
     
     <div class="container">
       <div class="row">
-        <h1 v-if="filmList.length > 0">Film</h1> 
-        <div class="d-flex flex-wrap" >
-          <FilmcardGroup v-for="(film) in filmList" :key="film.id" 
-          :poster="film.poster_path"
-          :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
+        <div class="col-12 text-center">
+          <h1 v-if="filmList.length > 0">Film</h1> 
         </div>
+      </div>  
+
+    <div class="row">     
+      <div class="col d-flex flex-wrap justify-content-center">
+        <FilmcardGroup v-for="(film) in filmList" :key="film.id" 
+        :poster="film.poster_path"
+        :title_original="film.original_title" :title="film.title" :language="film.original_language" :vote="film.vote_average"/>     
+      </div>     
+    </div>
+    
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 v-if="serieList.length > 0">Serie TV</h1>
       </div>
     </div>
-     <div class="container">
-      <div class="row">
-        <h1 v-if="serieList.length > 0">serie TV</h1>
-        <div class="d-flex flex-wrap" >
+
+    <div class="row">
+      <div class="col d-flex flex-wrap justify-content-center">      
           <FilmcardGroup v-for="(serie, index) in serieList" :key="index" 
           :name_original="serie.original_name" :name="serie.name" :poster="serie.poster_path"
-          :title_original="serie.original_title" :title="serie.title" :language="serie.original_language" :vote="serie.vote_average"/>     
-        </div>
+          :title_original="serie.original_title" :title="serie.title" :language="serie.original_language" :vote="serie.vote_average"/>          
       </div>
     </div>
     
-   
+    </div>
   </div>
 </template>
 

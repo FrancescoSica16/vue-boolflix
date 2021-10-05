@@ -1,25 +1,22 @@
 <template>   
-    <div class="col-3 card">
+    <div class="card">
         
-        <img :src="getImg()" alt="" class=" my-card-img img-fluid">
-
-        <div class="inside-card">
-            <h1 class="fw-bold">{{title_original ? title_original : name_original}}</h1>
-            <h3>{{title ? title : name}}</h3>
-            <div>
-                <!-- inserire img da assets -->
-                <img class="flag" :src="(language === 'it') ? 
-                require('../assets/img/64px-Flag_of_Italy.png') : 
-                (language === 'en') ?
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/64px-Flag_of_the_United_Kingdom_%283-5%29.svg.png' : 
-                // else
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_Union_of_Soviet_Socialist_Republics.png/64px-Flag_of_Union_of_Soviet_Socialist_Republics.png'" alt="">
+        <img v-if="poster" :src="getImg()" alt="" class=" my-card-img">
+        <img v-else src="../assets/img/placholder342x458.png" alt="" class=" my-card-img">
+        <div class="inside-card ">
+            <h1 class="">Titolo: {{title_original ? title_original : name_original}}</h1>
+            <h3>Titolo originale: {{title ? title : name}}</h3>
+            <div class="voto mb-2">                     
+                <i v-for="n in 5" :key="n" class="fas fa-star" :class="(n <= Math.round(vote)/2) ? 'yellow' : 'gray' "></i>   
+                <!-- <p>{{vote}}</p>  -->
             </div>
-            <!-- <p>{{vote}}</p> -->
-            <div class="voto">
-                <p>{{vote}}</p>
-                <i v-for="n in 5" :key="n" class="fas fa-star" :class="(n <= Math.round(vote)/2) ? 'yellow' : 'gray' "></i>
+            <div class="language-wrapper">
+                <img v-if="language === 'it'" src="../assets/img/64px-Flag_of_Italy.png" alt="Italian flag">
+                <img v-else-if="language === 'en'" src="../assets/img/Flag_of_the_United_Kingdom_(3-5).svg.png" alt="England flag">  
+                <p v-else>{{language}}</p>         
             </div>
+        
+            
         </div>         
     </div>  
 </template>
@@ -52,6 +49,18 @@ export default {
     .card{
         max-width: 232px;
         max-height: 347px;
+        margin: 5px;
+       
+    }
+    .inside-card{
+        height: 100%;
+        background-color: $bgColorCard;
+        color: $cardTextColor;
+        padding: 20px;
+  
+    }
+    .my-card-img{
+        height: -moz-fit-content;
     }
     .card:not(:hover){
         .inside-card{
@@ -60,16 +69,16 @@ export default {
     }
 
     .card:hover{
+        border: 3px double rgba(249,0,0,0.68);
+
         .my-card-img{
             display: none;
         }  
     }
-
-   img.flag{
+   .language-wrapper img{
         width: 30px;
     }
-
     .yellow{
-        color: yellow;
+        color: orange;
     }
 </style>

@@ -1,10 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
-// @import fontsource
 
 *{
     box-sizing: border-box;
     margin: 0 ;
     padding: 0;
+}
+
+
+
+.inside-card h1, h3{
+    font-size: 20px;
 }

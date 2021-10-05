@@ -4,7 +4,7 @@
         <img v-if="poster" :src="getImg()" alt="" class=" my-card-img">
         <img v-else src="../assets/img/placholder342x458.png" alt="" class=" my-card-img">
         <div class="inside-card ">
-            <h1 class="">Titolo: {{title_original ? title_original : name_original}}</h1>
+            <h1 class=""><strong>Titolo:</strong>  {{title_original ? title_original : name_original}}</h1>
             <h3>Titolo originale: {{title ? title : name}}</h3>
             <div class="voto mb-2">                     
                 <i v-for="n in 5" :key="n" class="fas fa-star" :class="(n <= Math.round(vote)/2) ? 'yellow' : 'gray' "></i>   

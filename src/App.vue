@@ -48,6 +48,7 @@ export default {
     return {
       filmList: [],
       serieList: [],
+      key:'3470fd1ace343e7c3044569008e5458d',
     }
   },
   props: {
@@ -66,28 +67,34 @@ export default {
 
       axios.get('https://api.themoviedb.org/3/search/movie/', {
         params: { 
-          api_key : '3470fd1ace343e7c3044569008e5458d',
+          api_key : this.key,
           query: serchKey
         }})
       .then( (response) => {
          this.filmList = response.data.results.slice();
-          console.log(this.filmList);
+        console.log(this.filmList);
+
+           this.filmList.forEach(element => {
+           axios.get("https://api.themoviedb.org/3/movie/"+ element.id +"/casts",{
+             params: { 
+                api_key : this.key,
+            
+           }
+        });
     });
+
+    }); //fine end 73 response
 
     axios.get('https://api.themoviedb.org/3/search/tv/', {
         params: { 
-          api_key : '3470fd1ace343e7c3044569008e5458d',
+          api_key : this.key,
           query: serchKey
         }})
       .then( (response) => {
          this.serieList = response.data.results.slice();
           console.log(this.serieList);
-    })
-
-     // .catch ( 
-    //   (errore) => {
+    });
     }
-
   }
 }
 </script> 
